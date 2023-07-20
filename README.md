@@ -5,9 +5,7 @@ A decentralised credit scoring service based on blockchain which employs deep le
 
 A flow chart describing the overall application is as follows:
 
-<p align="center">
-  <img src="/images/model.png" width="800"/>
-</p>
+![image](https://github.com/ArthurStarks/Blockchain_Bank_Loan_Scoring/assets/137041166/2eb55269-b131-4db6-8e98-1c2b9690a949)
 
 1. Each bank has a loan application portal through which loan applicants generally input their sensitive data and upload important documents such as income-tax returns. This data is then inserted into the Multichain datastream from which the Machine Learning Node can get access to the data.
 
@@ -37,7 +35,7 @@ The solution has 4 layers which includes:
 ###### Create the Master-Machine Learning Node
 1. In the Azure Portal allow go to the deployed virtual machine and ssh into the machine by clicking on connect and running the ssh command `ssh username@IP`. Enter the VM password during the setup and after successful login you should see `Welcome to Ubuntu 17.10 (GNU/Linux 4.13.0-37-generic x86_64)`
 
-2. Create the Machine Learning Master Node and set up a fresh Blockchain network by running the command: `curl -s https://raw.githubusercontent.com/piy0999/CreditSense/master/bank_node/setup_master.sh | bash /dev/stdin`
+2. Create the Machine Learning Master Node and set up a fresh Blockchain network by running the command: `curl -s https://raw.githubusercontent.com/...| bash /dev/stdin`
 
 3. Enter OK whenever prompted by Ubuntu and the installation using shell script should begin which takes around 4 minutes. 
 
@@ -49,9 +47,8 @@ The solution has 4 layers which includes:
 
 7. Create another port rule by clicking Add inbound port rule and inside the inbound port rule dialog type in port_ranges <b> Blockchain Port </b> (This allows the connection with blockchain). The Blockchain Port can be found inside the terminal in the message `Connect to chain1@10.0.0.4:2761 from other nodes` returned just before the message `9. Starting flask server...`. In this case the Blockchain Port is 2761. 
 
-<p align="center">
-  <img src="/images/ML-Final.png" width="800"/>
-</p>
+![image](https://github.com/ArthurStarks/Blockchain_Bank_Loan_Scoring/assets/137041166/9b8bf5b4-c887-4eb2-a3e2-72a0ed5afb47)
+
 
 8. Now Setup another node inside the blockchain for further process. Remember to store the <b> chain address </b> with you for further processing which can be found before the `Connect to chain1@10.0.0.4:2761 from other nodes` message. In this case, it is `90c123532b29b4b07b3c072cab67502eabc64531804cb1aa3c741f03bd628dc3`. Please refer to the image for a better understanding. 
 
@@ -76,10 +73,6 @@ In the Azure Portal allow go to the deployed virtual machine and ssh into the ma
 
 8. Scroll up inside the terminal until you see the message `9. Starting flask server...` and right above this message the node address is found in the message `Get 60% consensus from the network to grant admin permissions to your address 1BBpVCYkmwWEEGz3MfyAT5G18Fy3ByC7JD2uNd`. Save this address.  
 
-<p align="center">
-  <img src="/images/node.png" width="800"/>
-</p>
-
 9. Now permission is needed to join the network from the master Machine Learning node. Please follow the instructions for granting the permission to the node found below. 
 
 ###### Grant Permissions to bank node
@@ -93,40 +86,14 @@ Let's Submit an application
 
 1. Type `IP/user/apply_loan/` this is a sample application form which would be inside the bank's online banking portal. Just click on submit which generates a set of data and then sends it to the machine learning node. A dialog box saying `The Application has been received` appears on successful submission. 
 
-<p align="center">
-  <img src="/images/user-application.png" width="800"/>
-</p>
 
 2. After this type `IP/bank/dashboard/` which now shows the number of pending applications, approved applications and total number of applications being queried live from the blockchain. 
 
-<p align="center">
-  <img src="/images/bank-dashboard.png" width="800"/>
-</p>
 
-3. Now a bank can <b> Approve or Disapprove </b> the loan by clicking on Pending Applications tab and then selecting approve or disapprove from the list of applicants shown with their crypted IDs and credit scores. 
-
-<p align="center">
-  <img src="/images/bank-approve.png" width="800"/>
-</p>
-
+3. Now a bank can <b> Approve or Disapprove </b> the loan by clicking on Pending Applications tab and then selecting approve or disapprove from the list of applicants shown with their crypted IDs and credit scores.
+   
 4. To generate the credit report of an applicant click on the Applicant data tab and enter the HKID (one of those which have been submitted using the apply_loan form above). This ID should be found from the chrome javascript console where the first parameter in the json object printed on the console is id (as random id's are being generated for testing purposes, it is possible to add your custom ID and data still). Use this ID (you can generate as many ID's and applications as possible) and enter on the Applicant data form which would result in returning of the credit score along with applicant's past applications history. 
-To find the ID please refer to the screenshot:
 
-<p align="center">
-  <img src="/images/User-findID.png" width="800"/>
-</p>
-
-Enter the ID here:
-
-<p align="center">
-  <img src="/images/bank-report.png" width="800"/>
-</p>
-
-The final credit score is shown as:
-
-<p align="center">
-  <img src="/images/bank-creditscore.png" width="800"/>
-</p>
 
 # System Details
 
@@ -152,4 +119,5 @@ We have three main target customers:
 
 <b> Government (i.e.: Financial regulators) → </b>  With the ease in acquiring a standardized credit score, governments could benefit from the increasingly accurate data by leveraging its ability to distinguish the financial capabilities of its citizens. Consequently, via data analyses, the government could derive or be one of the indicators to determine the economic stability of the region as a whole. This could be achieved by implementing a government node on the blockchain and having a specific machine learning model for their analysis in the form of anonymized data.
 
-<b> Credit Sense makes Sense! </b>
+![image](https://github.com/ArthurStarks/Blockchain_Bank_Loan_Scoring/assets/137041166/2ee5b7f5-adfa-45af-a09e-d6b34505b106)
+
